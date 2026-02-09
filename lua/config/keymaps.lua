@@ -9,17 +9,8 @@ keymap('n', '<C-r>', '<cmd>silent redo<CR>', {
     noremap = true
 })
 
--- miniai配合c相关，直接扔到 "_
-keymap('n', 'cq', '"_ciq', {
-    remap = true
-})
-keymap('n', 'cb', '"_cib', {
-    remap = true
-})
-keymap('n', 'ca', '"_cia', {
-    remap = true
-})
-keymap('n', 'cf', '"_cif', {
+-- 直接扔到 "_
+keymap('n', '<leader>c', '"_c', {
     remap = true
 })
 
@@ -33,7 +24,8 @@ if vim.g.vscode then
     keymap('n', '<leader>e', vscm('workbench.view.explorer'))
     keymap('n', '<leader>g', vscm('workbench.view.scm'))
     keymap('n', '<leader>s', vscm('workbench.action.toggleStatusbarVisibility'))
-    keymap('n', '<leader>m', vscm('workbench.action.toggleMaximizedPanel'))
+    keymap('n', '<leader>m', vscm('editor.action.toggleMinimap'))
+    keymap('n', '<leader>l', vscm('outline.focus'))
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
