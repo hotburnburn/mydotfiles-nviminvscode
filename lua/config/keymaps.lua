@@ -30,6 +30,9 @@ if vim.g.vscode then
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
 
+    keymap('n', '<leader>[', vscm('editor.fold'))
+    keymap('n', '<leader>]', vscm('editor.unfold'))
+
     keymap('n', ']d', vscm('editor.action.marker.next'))
     keymap('n', '[d', vscm('editor.action.marker.prev'))
 
