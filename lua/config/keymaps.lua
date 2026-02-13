@@ -1,14 +1,6 @@
 local keymap = vim.keymap.set
 local vscode = require('vscode-neovim')
 
--- 静默撤销和重做
-keymap('n', 'u', '<cmd>silent undo<CR>', {
-    noremap = true
-})
-keymap('n', '<C-r>', '<cmd>silent redo<CR>', {
-    noremap = true
-})
-
 -- 直接扔到 "_
 keymap('n', '<leader>c', '"_c', {
     remap = true
