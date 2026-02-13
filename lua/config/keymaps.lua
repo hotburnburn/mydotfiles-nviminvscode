@@ -26,6 +26,7 @@ if vim.g.vscode then
     keymap('n', '<leader>s', vscm('workbench.action.toggleStatusbarVisibility'))
     keymap('n', '<leader>m', vscm('editor.action.toggleMinimap'))
     keymap('n', '<leader>l', vscm('outline.focus'))
+    keymap('n', '<leader>k', vscm('workbench.action.tasks.runTask'))
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
