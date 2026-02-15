@@ -19,6 +19,7 @@ if vim.g.vscode then
     keymap('n', '<leader>m', vscm('editor.action.toggleMinimap'))
     keymap('n', '<leader>l', vscm('outline.focus'))
     keymap('n', '<leader>k', vscm('workbench.action.tasks.runTask'))
+    keymap('n', '<leader>r', vscm('code-runner.run'))
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
