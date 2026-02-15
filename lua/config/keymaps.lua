@@ -7,7 +7,9 @@ keymap('n', '<leader>c', '"_c', {
 })
 
 -- enter*2 -> noh
-keymap('n', '<CR><CR>', ':noh<CR>')
+keymap('n', '<CR><CR>', ':noh<CR>', {
+    silent = true
+})
 
 local function vscm(command)
     return function()
