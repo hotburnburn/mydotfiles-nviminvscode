@@ -1,15 +1,6 @@
+-- basic: keymap and vscodemap
 local keymap = vim.keymap.set
 local vscode = require('vscode-neovim')
-
--- 直接扔到 "_
-keymap('n', '<leader>c', '"_c', {
-    remap = true
-})
-
--- enter*2 -> noh
-keymap('n', '<CR><CR>', ':noh<CR>', {
-    silent = true
-})
 
 local function vscm(command)
     return function()
@@ -17,6 +8,18 @@ local function vscm(command)
     end
 end
 
+-- native
+keymap('n', '<leader>c', '"_c', {
+    remap = true,
+    desc = "let c discard the content to hole register"
+})
+
+keymap('n', '<CR><CR>', ':noh<CR>', {
+    silent = true,
+    desc = "enter*2 -> silent noh"
+})
+
+-- in vscode
 if vim.g.vscode then
     keymap('n', '<leader>e', vscm('workbench.view.explorer'))
     keymap('n', '<leader>g', vscm('workbench.view.scm'))
