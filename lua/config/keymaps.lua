@@ -6,6 +6,9 @@ keymap('n', '<leader>c', '"_c', {
     remap = true
 })
 
+-- enter*2 -> noh
+keymap('n', '<CR><CR>', ':noh<CR>')
+
 local function vscm(command)
     return function()
         vscode.action(command)
