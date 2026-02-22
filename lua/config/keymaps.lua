@@ -27,7 +27,12 @@ if vim.g.vscode then
     keymap('n', '<leader>m', vscm('editor.action.toggleMinimap'))
     keymap('n', '<leader>l', vscm('outline.focus'))
     keymap('n', '<leader>k', vscm('workbench.action.tasks.runTask'))
-    keymap('n', '<leader>r', vscm('code-runner.run'))
+    keymap('n', '<leader>r', function()
+        vscm('code-runner.run')()
+        vim.defer_fn(function()
+            vscm('workbench.action.terminal.focus')()
+        end, 100) -- 延迟 100ms
+    end)
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
