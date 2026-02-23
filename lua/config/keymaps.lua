@@ -65,3 +65,26 @@ if vim.g.vscode then
     })
 end
 
+-- 全局单字符跳转（类似 f/F 但跨行）
+local function go_to_char(forward)
+    return function()
+        local char = vim.fn.getcharstr()
+        if char == '\27' or char == '' then
+            return
+        end -- ESC 取消
+
+        -- 转义特殊字符 / \ . * $ ^ ~ [ 等
+        local escaped = vim.fn.escape(char, '/\\.*$^~[]')
+
+        -- 搜索：W = 不循环 wrap, z = 开始位置不计算在内（避免原地不动）
+        local flag = forward and 'Wz' or 'bWz'
+        vim.fn.search(escaped, flag)
+    end
+end
+
+keymap({'n', 'x', 'o'}, 'gn', go_to_char(true), {
+    desc = 'Go to next char (global)'
+})
+keymap({'n', 'x', 'o'}, 'gp', go_to_char(false), {
+    desc = 'Go to prev char (global)'
+})
