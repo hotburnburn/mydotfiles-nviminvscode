@@ -1,12 +1,5 @@
 -- basic: keymap and vscodemap
 local keymap = vim.keymap.set
-local vscode = require('vscode-neovim')
-
-local function vscm(command)
-    return function()
-        vscode.action(command)
-    end
-end
 
 -- native
 keymap('n', '<leader>c', '"_c', {
@@ -21,6 +14,14 @@ keymap('n', '<CR><CR>', ':noh<CR>', {
 
 -- in vscode
 if vim.g.vscode then
+    local vscode = require('vscode-neovim')
+
+    local function vscm(command)
+        return function()
+	    vscode.action(command)
+        end
+    end
+
     keymap('n', '<leader>e', vscm('workbench.view.explorer'))
     keymap('n', '<leader>g', vscm('workbench.view.scm'))
     keymap('n', '<leader>s', vscm('workbench.action.toggleStatusbarVisibility'))
