@@ -18,9 +18,33 @@ if vim.g.vscode then
 
     local function vscm(command)
         return function()
-	    vscode.action(command)
+            vscode.action(command)
         end
     end
+
+    keymap("n", "j", function()
+        return vim.v.count == 0 and "gj" or "j"
+    end, {
+        expr = true,
+        remap = true
+    })
+
+    keymap("n", "k", function()
+        return vim.v.count == 0 and "gk" or "k"
+    end, {
+        expr = true,
+        remap = true
+    })
+
+    -- = 扩大选中范围 (向外扩展：单词 -> 语句 -> 块 -> 函数 -> 类)
+    keymap({'n', 'v'}, '-', vscm('editor.action.smartSelect.expand'), {
+        desc = "VSCode: 扩大选中范围"
+    })
+
+    -- - 缩小选中范围
+    keymap({'n', 'v'}, '_', vscm('editor.action.smartSelect.shrink'), {
+        desc = "VSCode: 缩小选中范围"
+    })
 
     keymap('n', '<leader>e', vscm('workbench.view.explorer'))
     keymap('n', '<leader>g', vscm('workbench.view.scm'))
@@ -34,6 +58,8 @@ if vim.g.vscode then
             vscm('workbench.action.terminal.focus')()
         end, 100) -- 延迟 100ms
     end)
+
+    keymap('n', '<leader>ce', vscm('errorLens.copyProblemMessage'))
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
@@ -50,8 +76,8 @@ if vim.g.vscode then
     keymap('n', 'gs', vscm('workbench.action.gotoSymbol'))
     keymap('n', 'gS', vscm('workbench.action.showAllSymbols'))
 
-    keymap('n', 'tp', vscm('workbench.action.previousEditor'))
-    keymap('n', 'tn', vscm('workbench.action.nextEditor'))
+    keymap('n', 'J', vscm('workbench.action.previousEditor'))
+    keymap('n', 'L', vscm('workbench.action.nextEditor'))
     keymap('n', 'to', vscm('workbench.action.closeOtherEditors'))
     keymap('n', 'tw', vscm('workbench.action.closeAllEditors'))
 
@@ -59,6 +85,14 @@ if vim.g.vscode then
     keymap('n', 'tf', vscm('testing.runAll'))
 
     keymap('n', '<leader>p', vscm('workbench.action.showCommands'))
+
+    keymap('n', 'zh', vscm('workbench.action.navigateLeft'))
+    keymap('n', 'zl', vscm('workbench.action.navigateRight'))
+    keymap('n', 'zj', vscm('workbench.action.navigateDown'))
+    keymap('n', 'zk', vscm('workbench.action.navigateUp'))
+    keymap('n', 'zp', 'zt', {
+        remap = true
+    })
 
     keymap({'i', 'v'}, '<C-s>', '<Esc>:w<CR>', {
         noremap = true,
