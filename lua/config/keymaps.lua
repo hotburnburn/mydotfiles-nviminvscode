@@ -48,8 +48,9 @@ if vim.g.vscode then
 
     keymap('n', '<leader>e', vscm('workbench.view.explorer'))
     keymap('n', '<leader>g', vscm('workbench.view.scm'))
-    keymap('n', '<leader>s', vscm('workbench.action.toggleStatusbarVisibility'))
-    keymap('n', '<leader>m', vscm('editor.action.toggleMinimap'))
+    keymap('n', 'ts', vscm('workbench.action.toggleStatusbarVisibility'))
+    keymap('n', 'tm', vscm('editor.action.toggleMinimap'))
+    keymap('n', 'tb', vscm('breadcrumbs.toggle'))
     keymap('n', '<leader>l', vscm('outline.focus'))
     keymap('n', '<leader>k', vscm('workbench.action.tasks.runTask'))
     keymap('n', '<leader>r', function()
