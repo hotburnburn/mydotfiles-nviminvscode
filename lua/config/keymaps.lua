@@ -61,6 +61,8 @@ if vim.g.vscode then
     end)
 
     keymap('n', '<leader>ce', vscm('errorLens.copyProblemMessage'))
+    keymap('n', '<leader>cl', vscm('notifications.clearAll'))
+    keymap('n', '<leader>ch', vscm('workbench.action.showOutputChannels'))
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
