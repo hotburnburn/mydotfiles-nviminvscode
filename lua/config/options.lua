@@ -4,6 +4,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 if vim.g.vscode then
-    vim.opt.cmdheight = 9999
-    vim.opt.shortmess:append("satIc")
+	vim.opt.cmdheight = 9999
+	vim.opt.shortmess:append("satIc")
 end
