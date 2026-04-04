@@ -22,13 +22,29 @@ if vim.g.vscode then
         end
     end
 
+    keymap('n', '<Tab>', '<Nop>', {
+        noremap = true,
+        silent = true
+    })
+    keymap('n', '<Tab>c', vscm('notifications.clearAll'))
+    keymap('n', '<Tab>o', vscm('workbench.action.showOutputChannels'))
+    keymap('n', '<Tab>b', vscm('workbench.action.toggleStatusbarVisibility'))
+    keymap('n', '<Tab>m', vscm('editor.action.toggleMinimap'))
+    keymap('n', '<Tab>s', vscm('breadcrumbs.toggle'))
+    keymap('n', '<Tab>g', vscm('workbench.view.scm'))
+    keymap('n', '<Tab>l', vscm('outline.focus'))
+
+    keymap('n', '<CR>o', vscm('workbench.action.closeOtherEditors'))
+    keymap('n', '<CR>t', vscm('testing.runAtCursor'))
+    keymap('n', '<CR>f', vscm('testing.runAll'))
+
+    -- 视觉行 jk
     keymap("n", "j", function()
         return vim.v.count == 0 and "gj" or "j"
     end, {
         expr = true,
         remap = true
     })
-
     keymap("n", "k", function()
         return vim.v.count == 0 and "gk" or "k"
     end, {
@@ -40,18 +56,12 @@ if vim.g.vscode then
     keymap({'n', 'v'}, '-', vscm('editor.action.smartSelect.expand'), {
         desc = "VSCode: 扩大选中范围"
     })
-
     -- - 缩小选中范围
     keymap({'n', 'v'}, '_', vscm('editor.action.smartSelect.shrink'), {
         desc = "VSCode: 缩小选中范围"
     })
 
     keymap('n', '<leader>e', vscm('workbench.view.explorer'))
-    keymap('n', '<leader>g', vscm('workbench.view.scm'))
-    keymap('n', 'ts', vscm('workbench.action.toggleStatusbarVisibility'))
-    keymap('n', 'tm', vscm('editor.action.toggleMinimap'))
-    keymap('n', 'tb', vscm('breadcrumbs.toggle'))
-    keymap('n', '<leader>l', vscm('outline.focus'))
     keymap('n', '<leader>k', vscm('workbench.action.tasks.runTask'))
     keymap('n', '<leader>r', function()
         vscm('code-runner.run')()
@@ -61,8 +71,6 @@ if vim.g.vscode then
     end)
 
     keymap('n', '<leader>ce', vscm('errorLens.copyProblemMessage'))
-    keymap('n', '<leader>cl', vscm('notifications.clearAll'))
-    keymap('n', '<leader>ch', vscm('workbench.action.showOutputChannels'))
 
     keymap('n', '<leader> ', vscm('workbench.action.quickOpen'))
     keymap('n', '<leader>o', vscm('workbench.action.openRecent'))
@@ -81,11 +89,6 @@ if vim.g.vscode then
 
     keymap('n', 'J', vscm('workbench.action.previousEditor'))
     keymap('n', 'L', vscm('workbench.action.nextEditor'))
-    keymap('n', 'to', vscm('workbench.action.closeOtherEditors'))
-    keymap('n', 'tw', vscm('workbench.action.closeAllEditors'))
-
-    keymap('n', 'tt', vscm('testing.runAtCursor'))
-    keymap('n', 'tf', vscm('testing.runAll'))
 
     keymap('n', '<leader>p', vscm('workbench.action.showCommands'))
 
